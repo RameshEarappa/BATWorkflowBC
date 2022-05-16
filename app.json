@@ -1,0 +1,34 @@
+{
+  "id": "f3688f27-9e20-4dce-a8ac-789b19a8d3ed",
+  "name": "BAT Workflows",
+  "publisher": "InTwo",
+  "version": "1.0.0.9",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "71526075-ff0a-4af6-b5c5-60eb6f8c1418",
+      "name": "RJEDevelopments",
+      "publisher": "Levtech",
+      "version": "1.0.0.0"
+    }
+  ],
+  "target": "Cloud",
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "17.0.0.0",
+  "idRanges": [
+    {
+      "from": 50100,
+      "to": 50149
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://BATWorkflows.com/help/",
+  "showMyCode": false,
+  "runtime": "6.0"
+}
