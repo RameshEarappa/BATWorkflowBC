@@ -35,7 +35,7 @@ tableextension 50114 "Whse Shipment Header Ext" extends "Warehouse Shipment Head
         field(60007; "Total Volume MC LT"; Decimal)
         {
             DataClassification = ToBeClassified;
-            Caption = 'Total Volume MC';
+            Caption = 'Total Volume MCube';
         }
         field(60008; "Total Outer MC LT"; Decimal)
         {
