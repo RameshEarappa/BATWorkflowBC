@@ -8,7 +8,7 @@
             "serverInstance": "9f258f45-f209-48e5-a704-f269d2f42216",
             "environmentType": "Sandbox",
             "environmentName": "UAT-2-New",
-            "startupObjectId": 22,
+            "startupObjectId": 7339,
             "startupObjectType": "Page",
             "breakOnError": true,
             "launchBrowser": true,

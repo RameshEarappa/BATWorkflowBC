@@ -40,16 +40,19 @@ page 50105 "Plan Shipment LT"
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    Caption = 'Total Outer MC';
                 }
                 field(TotalPackMCLT; TotalPackMCLT)
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    Caption = 'Total Pack MC';
                 }
                 field(TotalVolumeMCLT; TotalVolumeMCLT)
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    Caption = 'Total Volume MC';
                 }
             }
         }
@@ -63,11 +66,12 @@ page 50105 "Plan Shipment LT"
         TotalPackMCLT: Decimal;
         TotalVolumeMCLT: Decimal;
 
-    procedure SetupTotalValues(TotalOuterP: Decimal; TotalPackP: Decimal; TotalVolumeP: Decimal)
+    procedure SetupTotalValues(TotalOuterP: Decimal; TotalPackP: Decimal; TotalVolumeP: Decimal; ShipmentGroupP: Code[20])
     begin
         TotalOuterMCLT := TotalOuterP;
         TotalPackMCLT := TotalPackP;
         TotalVolumeMCLT := TotalVolumeP;
+        ShipmentGroupCodeLT := ShipmentGroupP;
     end;
 
     procedure GetPlanShipment(Var PlanShippingAgentCodeP: Text; Var PlanAgentServiceP: Text;

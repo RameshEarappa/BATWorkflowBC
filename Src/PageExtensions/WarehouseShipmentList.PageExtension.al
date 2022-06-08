@@ -4,7 +4,16 @@ pageextension 50121 "Warehouse Shipment List Ext" extends "Warehouse Shipment Li
     {
         addafter(Status)
         {
-
+            field("VAN Unloading TO"; Rec."VAN Unloading TO")
+            {
+                ToolTip = 'Specifies the value of the VAN Unloading TO field.';
+                ApplicationArea = All;
+            }
+            field("Created By API"; Rec."Created By API")
+            {
+                ToolTip = 'Specifies the value of the VAN loading TO field.';
+                ApplicationArea = All;
+            }
             field("Sell-to Customer No. LT"; Rec."Sell-to Customer No. LT")
             {
                 ToolTip = 'Specifies the value of the Sell-to Customer No. field.';
@@ -68,16 +77,6 @@ pageextension 50121 "Warehouse Shipment List Ext" extends "Warehouse Shipment Li
             field("Total Volume MC LT"; Rec."Total Volume MC LT")
             {
                 ToolTip = 'Specifies the value of the Total Volume MC field.';
-                ApplicationArea = All;
-            }
-            field("Van Loading TO LT"; Rec."Van Loading TO LT")
-            {
-                ToolTip = 'Specifies the value of the Van Loading TO field.';
-                ApplicationArea = All;
-            }
-            field("VAN Unloading TO"; Rec."VAN Unloading TO")
-            {
-                ToolTip = 'Specifies the value of the Van UnLoading TO field.';
                 ApplicationArea = All;
             }
             field("SO Shipment LT"; Rec."SO Shipment LT")
@@ -144,12 +143,14 @@ pageextension 50121 "Warehouse Shipment List Ext" extends "Warehouse Shipment Li
                     PlanAgentCodeL: Text;
                     NumberServiceL: Text;
                     ShipmentGroupL: Text;
+                    ShipmentGroupP: Text;
                 begin
                     CurrPage.SetSelectionFilter(Rec);
                     WhsHeaderL.Copy(Rec);
                     WhsHeaderL.CalcSums("Total Outer MC LT", "Total Pack MC LT", "Total Volume MC LT");
                     PlanShipmentDialog.Activate();
-                    PlanShipmentDialog.SetupTotalValues(WhsHeaderL."Total Outer MC LT", WhsHeaderL."Total Pack MC LT", WhsHeaderL."Total Volume MC LT");
+                    ShipmentGroupP := Format(CurrentDateTime);
+                    PlanShipmentDialog.SetupTotalValues(WhsHeaderL."Total Outer MC LT", WhsHeaderL."Total Pack MC LT", WhsHeaderL."Total Volume MC LT", ShipmentGroupP);
                     if PlanShipmentDialog.RunModal() = Action::OK then begin
                         PlanShipmentDialog.GetPlanShipment(PlanShipmentAgent, PlanAgentCodeL, NumberServiceL, ShipmentGroupL);
                         if (PlanShipmentAgent = '') or (PlanAgentCodeL = '') then begin

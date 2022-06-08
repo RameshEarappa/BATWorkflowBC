@@ -356,4 +356,27 @@ codeunit 50101 "Event Subscriber"
                 IsHandled := true;
         end;
     end;
+
+    [EventSubscriber(ObjectType::Codeunit, Codeunit::"Whse.-Post Shipment", 'OnAfterCreatePostedShptHeader', '', false, false)]
+    local procedure OnAfterCreatePostedShptHeader(var PostedWhseShptHeader: Record "Posted Whse. Shipment Header"; var WarehouseShipmentHeader: Record "Warehouse Shipment Header")
+    begin
+        PostedWhseShptHeader."Sell-to Customer No. LT" := WarehouseShipmentHeader."Sell-to Customer No. LT";
+        PostedWhseShptHeader."Sell-to Customer Name LT" := WarehouseShipmentHeader."Sell-to Customer Name LT";
+        PostedWhseShptHeader.Branch := WarehouseShipmentHeader.Branch;
+        PostedWhseShptHeader."Ship-to Code LT" := WarehouseShipmentHeader."Ship-to Code LT";
+        PostedWhseShptHeader."Ship-to Name LT" := WarehouseShipmentHeader."Ship-to Name LT";
+        PostedWhseShptHeader."Ship-to City LT" := WarehouseShipmentHeader."Ship-to City LT";
+        PostedWhseShptHeader."Bill-to City LT" := WarehouseShipmentHeader."Bill-to City LT";
+        PostedWhseShptHeader."Bill-to Post Code LT" := WarehouseShipmentHeader."Bill-to Post Code LT";
+        PostedWhseShptHeader."Ship-to Post Code LT" := WarehouseShipmentHeader."Ship-to Post Code LT";
+        PostedWhseShptHeader."Total Outer MC LT" := WarehouseShipmentHeader."Total Outer MC LT";
+        PostedWhseShptHeader."Total Pack MC LT" := WarehouseShipmentHeader."Total Pack MC LT";
+        PostedWhseShptHeader."Total Volume MC LT" := WarehouseShipmentHeader."Total Volume MC LT";
+        PostedWhseShptHeader."SO Shipment LT" := WarehouseShipmentHeader."SO Shipment LT";
+        PostedWhseShptHeader."Last Update Time Stamp LT" := WarehouseShipmentHeader."Last Update Time Stamp LT";
+        PostedWhseShptHeader."Shipment Group Code LT" := WarehouseShipmentHeader."Shipment Group Code LT";
+        PostedWhseShptHeader."Number of Service LT" := WarehouseShipmentHeader."Number of Service LT";
+        PostedWhseShptHeader."Shipping Time LT" := WarehouseShipmentHeader."Shipping Time LT";
+        PostedWhseShptHeader.Modify(true);
+    end;
 }

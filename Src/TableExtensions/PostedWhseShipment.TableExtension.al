@@ -1,4 +1,4 @@
-tableextension 50114 "Whse Shipment Header Ext" extends "Warehouse Shipment Header"
+tableextension 50115 "Posted Whse Shipment Ext" extends "Posted Whse. Shipment Header"
 {
     fields
     {
