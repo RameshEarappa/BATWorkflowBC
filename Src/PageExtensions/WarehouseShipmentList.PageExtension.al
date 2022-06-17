@@ -149,7 +149,7 @@ pageextension 50121 "Warehouse Shipment List Ext" extends "Warehouse Shipment Li
                     WhsHeaderL.Copy(Rec);
                     WhsHeaderL.CalcSums("Total Outer MC LT", "Total Pack MC LT", "Total Volume MC LT");
                     PlanShipmentDialog.Activate();
-                    ShipmentGroupP := Format(CurrentDateTime);
+                    ShipmentGroupP := Format(Today, 0, '<Year,2><Month,2><Day,2>') + Format(Time, 0, '<Hours24,2><Minutes,2><Seconds,2>');
                     PlanShipmentDialog.SetupTotalValues(WhsHeaderL."Total Outer MC LT", WhsHeaderL."Total Pack MC LT", WhsHeaderL."Total Volume MC LT", ShipmentGroupP);
                     if PlanShipmentDialog.RunModal() = Action::OK then begin
                         PlanShipmentDialog.GetPlanShipment(PlanShipmentAgent, PlanAgentCodeL, NumberServiceL, ShipmentGroupL);

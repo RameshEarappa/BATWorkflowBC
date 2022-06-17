@@ -32,10 +32,11 @@ pageextension 50108 "Sales Order Ext" extends "Sales Order"
                     ReleaseSalesDoc: Codeunit "Release Sales Document";
                     TotalQtyL: Integer;
                     ShowFinanceMessageL: Text;
+                    WhseRqst: Record "Warehouse Request";
                 begin
                     if CheckCreditLimit.CheckQuantityLimitBeforeApprovalRequest(Rec, TotalQtyL) and CheckCreditLimit.CheckFinanceLimit(Rec, TotalQtyL, ShowFinanceMessageL) then begin
-                        Rec.Status := Rec.Status::Released;
-                        Rec.Modify(true);
+                        ReleaseSalesDoc.SetSkipCheckReleaseRestrictions();
+                        ReleaseSalesDoc.Run(Rec);
                     end else
                         if ApprovalsMgmt.CheckSalesApprovalPossible(Rec) then
                             ApprovalsMgmt.OnSendSalesDocForApproval(Rec);
